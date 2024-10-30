@@ -45,7 +45,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>idle.png</pixmap>
+     <pixmap>images/idle.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -102,7 +102,7 @@ QPushButton:pressed {
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>microphone.png</normaloff>microphone.png</iconset>
+      <normaloff>images/microphone.png</normaloff>images/microphone.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -146,7 +146,7 @@ QPushButton:pressed {
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>chat.png</normaloff>chat.png</iconset>
+      <normaloff>images/chat.png</normaloff>images/chat.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -193,7 +193,7 @@ QPushButton:pressed {
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>menu.png</normaloff>menu.png</iconset>
+      <normaloff>images/menu.png</normaloff>images/menu.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -237,7 +237,7 @@ QPushButton:pressed {
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>timer.png</normaloff>timer.png</iconset>
+      <normaloff>images/timer.png</normaloff>images/timer.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -281,7 +281,7 @@ QPushButton:pressed {
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>quick notes.png</normaloff>quick notes.png</iconset>
+      <normaloff>images/quick notes.png</normaloff>images/quick notes.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -612,7 +612,7 @@ QPushButton:pressed {
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>sendChat.png</normaloff>sendChat.png</iconset>
+       <normaloff>images/sendChat.png</normaloff>images/sendChat.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -1059,11 +1059,44 @@ font-size: 14px;</string>
      </property>
     </widget>
    </widget>
+   <widget class="QPushButton" name="micMuteButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1020</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;
+color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Microphone ON</string>
+    </property>
+   </widget>
    <widget class="QFrame" name="menuTab">
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>10</y>
+      <y>0</y>
       <width>551</width>
       <height>881</height>
      </rect>
@@ -1606,61 +1639,28 @@ color: black</string>
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14px; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What is Iris?&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Iris is Your virtual assistant, capable of performing a variety of tasks to make your experience at work, or at home, more efficient.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Who is Iris for?&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;Iris is suitable for a vide range on demographics inlcuding students, giving them a place to keep organised and providing any information they need to find on the internet right at their fingertips - all in one app. Iris can also be used by adults for similar tasks, the simplistic design and this instruction manual is enough to get anyone with any experience working with this virutal assistant.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What can Iris do?&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;At the moment Iris is able to perform the following tasks: find quick answers and links for you, open any link you provide. Displaying your todo-list. Storing your notes. Setting a timer and providing a handy calendar. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;In addition, you are also able to change your Nickname and Location. (your location is only used to provide weather forecasts, you dont have to provide it to us, you are able to put &amp;quot;weather in ...&amp;quot; with the city name into chat and receive the weather anyway.&lt;br /&gt;To use the google search: type yout message into the chat window and sent it, if quick information is available then Iris will display it, if not, she will display links which youre able to copy and paste into the chat and the link will open. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;In addition, youre able to use the wakeword 'Iris' and speak your command to the assistant. If this is successful it will appear in chat and you will get a reply. In addition you can press the microphone button and ask your question. (list of commands is available at the bottom of this document)&lt;br /&gt;Finally the chat window is collapsable, meaning if you click the chat button the window will dissapear, if you click it again it will appear again.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Thank you for using the software.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Using the Microphone: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Iris is able to recognise a wake word 'Iris'. When the wake word is recognised you may speak the request which will apear in the chat window. All you have to do is send it and Iris will do the rest!&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Languages:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Using the menu tab, in User Information and Customization you are able to select the language to use Iris with. This will change the chat window as well as allow You to speak to Iris in that language too!&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:14px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What is Iris?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;Iris is Your virtual assistant, capable of performing a variety of tasks to make your experience at work, or at home, more efficient.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Who is Iris for?&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;&lt;br /&gt;Iris is suitable for a vide range on demographics inlcuding students, giving them a place to keep organised and providing any information they need to find on the internet right at their fingertips - all in one app. Iris can also be used by adults for similar tasks, the simplistic design and this instruction manual is enough to get anyone with any experience working with this virutal assistant.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What can Iris do?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;At the moment Iris is able to perform the following tasks: find quick answers and links for you, open any link you provide. Displaying your todo-list. Storing your notes. Setting a timer and providing a handy calendar. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;In addition, you are also able to change your Nickname and Location. (your location is only used to provide weather forecasts, you dont have to provide it to us, you are able to put &amp;quot;weather in ...&amp;quot; with the city name into chat and receive the weather anyway.&lt;br /&gt;To use the google search: type yout message into the chat window and sent it, if quick information is available then Iris will display it, if not, she will display links which youre able to copy and paste into the chat and the link will open. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;In addition, youre able to use the wakeword 'Iris' and speak your command to the assistant. If this is successful it will appear in chat and you will get a reply. In addition you can press the microphone button and ask your question. (list of commands is available at the bottom of this document)&lt;br /&gt;Finally the chat window is collapsable, meaning if you click the chat button the window will dissapear, if you click it again it will appear again.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;Thank you for using the software.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Using the Microphone: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;Iris is able to recognise a wake word 'Iris'. When the wake word is recognised you may speak the request which will apear in the chat window. All you have to do is send it and Iris will do the rest!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Languages:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;Using the menu tab, in User Information and Customization you are able to select the language to use Iris with. This will change the chat window as well as allow You to speak to Iris in that language too!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="micMuteButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>1020</y>
-      <width>151</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-border:solid;
-border-width:2px;
-border-radius: 10px;
-border-color: rgb(128, 0, 128);
-background-color: white;
-font-size: 14px;
-color: rgb(128, 0, 128);
-}
-
-QPushButton:hover {
-	background-color: rgb(160, 175, 185);
-}
-
-QPushButton:pressed {
-	background-color: rgb(160rgb(94, 103, 109), 175, 185);
-}
-</string>
-    </property>
-    <property name="text">
-     <string>Microphone ON</string>
-    </property>
    </widget>
   </widget>
  </widget>

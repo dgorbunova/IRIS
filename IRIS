@@ -148,7 +148,7 @@ def changeUserInfo(name, username, password,): #takes in name, username, passwor
 class CreateAcc(QDialog): 
         def __init__(self): 
                 super(CreateAcc,self).__init__() #constructor
-                loadUi('createAccount.ui',self) #loads ui file 
+                loadUi('GUI/createAccount.ui',self) #loads ui file 
                 self.setFixedSize(485,355) #sets size of widget
                 self.password.setEchoMode(QtWidgets.QLineEdit.Password) #covers up password with ***
                 self.passwordConfirm.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -181,7 +181,8 @@ class CreateAcc(QDialog):
 class Login(QDialog): 
         def __init__(self):    #constructor 
                 super(Login,self).__init__()   
-                loadUi('login.ui',self) #loads ui
+                file =('GUI/login.ui') #changes directory to where the login.ui file is stored
+                loadUi(file,self) #loads ui
                 
                 self.setFixedSize(485, 355)
                 self.setSizeGripEnabled(False)
@@ -220,7 +221,7 @@ class Login(QDialog):
 class mainStage(QMainWindow): 
         def __init__(self):  #constructor 
                 super(mainStage, self).__init__()
-                loadUi('main stage.ui', self) #loads ui
+                loadUi('GUI/main stage.ui', self) #loads ui
                 self.layout = QVBoxLayout() #layout defined as vertical
                 
                 self.setFixedSize(1920, 1080)
@@ -274,7 +275,8 @@ class mainStage(QMainWindow):
         def sendButtonClicked(self):
                 self.chat.setOpenExternalLinks(True)  # This enables opening links in the default browser
                 self.statusText.setText('Searching...') #status text changed to seatching
-                pixmap = QPixmap('searching.png').scaled(190,620)
+                file = 'GUI/images/searching.png' #file path to image
+                pixmap = QPixmap(file).scaled(190,620)
                 self.label.setPixmap(pixmap)
                 QApplication.processEvents() #pixmap updates to searching and changes are saved
                 message = self.userEntry.text() #holds input from field in varibale message
@@ -301,12 +303,16 @@ class mainStage(QMainWindow):
                         self.chat.append('\n')               
                                        
                         self.statusText.setText('Idle.')
-                        pixmap = QPixmap('idle.png').scaled(190,620)
+                        file = 'GUI/images/idle.png'
+                        pixmap = QPixmap(file).scaled(190,620)
                         self.label.setPixmap(pixmap) #status and pixmap are set to idle
                         QApplication.processEvents() #changes are saved
         
         def micRequest(self): 
                 self.statusText.setText('Listening...') #status text is set to listening
+                file = 'GUI/images/searching.png' #file path to image
+                pixmap = QPixmap(file).scaled(190,620)
+                self.label.setPixmap(pixmap)
                 QApplication.processEvents()
                 time.sleep(1) #allows for processing time
                 QApplication.processEvents()
@@ -334,14 +340,13 @@ class mainStage(QMainWindow):
                                         self.chat.append('\n') 
                         self.chat.append('\n')        
                 self.statusText.setText('Idle.')
-                pixmap = QPixmap('idle.png').scaled(190,620)
+                file = 'GUI/images/idle.png'
+                pixmap = QPixmap(file).scaled(190,620)
                 self.label.setPixmap(pixmap)
                 QApplication.processEvents() #resets the status text to idle and pixmap, saves changes
 
         def backgroundListen(self): 
-                print('Listening...')
                 while not self.stop_listening: #infinite loop
-                        print('in loop')
                         time.sleep(0.2) #runs every ~0.2 seconds
                         wakeWord = str('Iris') #wake word defined
                         attention = False #attention used to know when word has been heard
@@ -350,6 +355,9 @@ class mainStage(QMainWindow):
                                 if text == wakeWord: #if text is equal to wakeword
                                         attention = True #loop whill stop
                                         self.statusText.setText('Listening...') #telling the user the wakeword has been heard
+                                        file = 'GUI/images/searching.png' #file path to image
+                                        pixmap = QPixmap(file).scaled(190,620)
+                                        self.label.setPixmap(pixmap)
                                         QApplication.processEvents() #changes saved
                                         text = listen() #text obtained
                                         self.you_message('You:')
@@ -370,7 +378,8 @@ class mainStage(QMainWindow):
 
                                         self.chat.append('\n')
                                         self.statusText.setText('Idle.') 
-                                        pixmap = QPixmap('idle.png').scaled(190,620)
+                                        file = 'GUI/images/idle.png' #file path to image
+                                        pixmap = QPixmap(file).scaled(190,620)
                                         self.label.setPixmap(pixmap) #pixmap and text below sprite set to idle
                                         QApplication.processEvents() #saved changes to gui
                                 else: 
@@ -413,7 +422,7 @@ class mainStage(QMainWindow):
                         QApplication.processEvents() #changes are saved
                         time.sleep(1) #waits 1 second
                         if totalSecs == 0: #if timer finished
-                                sound_file = 'alarm.mp3' #sound file is set to alarm.mp3
+                                sound_file = 'SFX/alarm.mp3' #sound file is set to alarm.mp3
                                 sound = subprocess.call(["afplay", sound_file]) #sound is plaued
                                 self.hours.clear() #all input fields are cleared
                                 self.minutes.clear()
