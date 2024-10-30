@@ -1,0 +1,600 @@
+import sys;
+import os;
+from PyQt5 import QtWidgets;
+
+from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QVBoxLayout;
+from PyQt5.QtGui import QPixmap;
+from PyQt5.QtCore import Qt;
+from PyQt5.uic import loadUi;
+import sqlite3;
+from googlesearch import search;
+import webbrowser;
+from urllib.parse import urlparse;
+import speech_recognition as sr;
+import time;
+from threading import Thread;
+import requests;
+from bs4 import BeautifulSoup; 
+import subprocess;
+
+global_language = 'en'
+
+def set_language(new_language):
+    global global_language  # Indicate that we are using the global variable
+    global_language = new_language
+
+def enterUser(name, username, password, location): #takes in name, username, password and location as arguments
+        connection = sqlite3.connect('users.db') #creates a connection to the database 
+        c = connection.cursor() #defines the cursor, used to execute commands, as varibale c
+        c.execute("INSERT INTO Users VALUES (null ,:FirstName,:Username,:Password,:Location)", 
+        {'FirstName': name, 'Username': username, 'Password': password, 'Location' : location}) 
+        #executes the statement used to insert values of username, name, password and locaiton into the database
+        connection.commit() #changes to the username are commited
+        connection.close() # database is closed
+        path = getUserDirectory(username) #calls function getUserDirectory which returns path to user's folder 
+        #in storage, stores result in variable path 
+        os.mkdir(path) #make the folder at the directory returned from getUserDirectory
+
+def GetLinks(message): #takes in the message entered by user into chat
+        query = message  # sets the value of query to message
+        links = []  # creates an empty array
+
+        for j in search(query, tld='co.uk', num=5, stop=5, pause=2):  # go through each link retrieved from search
+                links.append(j)  # append the link to the array
+
+        return links  # return the array of links
+
+def userExists(username, password): #takes in username and password as parameters
+        exist = False 
+        connection =sqlite3.connect('users.db') #creates a connection to the database
+        c = connection.cursor() #defines a cursor which will be used to execute statements
+        c.execute("SELECT * FROM users WHERE Username = :Username", {'Username': username }) 
+        #selects fields where username is user's input
+        if (c.fetchone()) != None: #fetches one result and if that doesnt equal to none this is executed
+                exist = True
+                c.execute("SELECT Password FROM users WHERE Username = :Username", {'Username': username })
+                result =str(c.fetchone()) #saved the password from the SQL table where the username is input
+                if result == ("('"+password+"',)"): #string is reformated
+                        exist = True
+                        return exist 
+                else: 
+                        exist = False
+                        return exist
+        else: 
+                exist = False
+                connection.commit() #connection is saved
+                connection.close() #database is closed
+                return exist #exist is returned
+               
+def listen(): #gets user input as speech and converts it to text
+        
+        r = sr.Recognizer() #recognizer class as a vairbale r 
+        with sr.Microphone() as source: 
+                audio = r.listen(source, None, 3) #listens for 3 seconds to microphone
+        try:
+                text = r.recognize_google(audio, language=global_language) #uses google api recognition to tranlate to text
+        except sr.UnknownValueError: #if no value is detected
+                text = ''
+        return text #text returned to mainStage class
+
+def quickSearch(message): #takes message as param
+        language_code = global_language
+        query = message.replace(' ', '+') #replaces spaces with pluses in stirng
+        url = f'https://www.google.com/search?q={query}&hl={language_code}' #concatenates base to query
+        USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+        headers = {'user-agent' : USER_AGENT} #defines headers and user agents to bypass cookies
+        resp = requests.get(url,headers=headers) #gets the HTML for request
+        soup = BeautifulSoup(resp.content, 'lxml') #parses html using lxml parser
+        snippetClasses = ['LGOjhe', 'di3YZe', 'V3FYCf', 'Z0LcW', 'iKJnec', 'FLP8od', 'RqBzHd', 'hgKElc' ] 
+        snippetSpans = ['ILfuVd']
+        #div classes for featured snippets
+        found = False
+        # Search in divs with specified classes
+        for i in snippetClasses:
+                snippet = soup.find('div', class_=(i))
+                if found == False:
+                        if snippet is None:
+                                continue  # Keep searching if no snippet is found
+                        else:
+                                found = True
+                                snippet = snippet.text  # Extract the snippet text
+                                return snippet  # Return the found snippet
+
+        # Search in spans with specified classes
+        for i in snippetSpans:
+                snippet = soup.find('span', class_=(i))
+                if found == False:
+                        if snippet is None:
+                                continue  # Keep searching if no snippet is found
+                        else:
+                                found = True
+                                snippet = snippet.text  # Extract the snippet text
+                                return snippet  # Return the found snippet
+
+       
+        #checks for class
+        
+def getUserDirectory(username): #takes in username as param
+        directory = username #sets username to directory
+        parentDirectory = (r"userStorage")#base path
+        path = os.path.join(parentDirectory, directory) #going parent directory and directory into one path
+        return path #returns path
+
+def retrieveInfo(username,password): #takes in username and password as param
+        connection = sqlite3.connect('users.db') #conencts to the db
+        c = connection.cursor() #defines cursor
+        c.execute("SELECT FirstName, Location FROM Users WHERE Username = :Username and Password = :Password", 
+        {'Username':username, 'Password':password}) #selects firstname adn location from db where username and pass
+        # are inputs form user
+        result = c.fetchone() #stores result in variable result
+        name = result[0] #result pos 0 is name
+        location =result[1] #result pos 1 is locaton
+        connection.commit() #commits changes
+        connection.close() #closes database
+        return name #returns name and location
+
+def changeUserInfo(name, username, password,): #takes in name, username, password and location as param
+        connection = sqlite3.connect('users.db') #connects to db
+        c = connection.cursor() #defines cursor
+        c.execute("""UPDATE Users SET FirstName = :FirstName, Location = :Location WHERE Username = :Username""", 
+        {'FirstName':name, 'Location':'','Username': username})
+        #updates firstname and location fields
+        connection.commit() #commits changes
+        connection.close() #closes db
+
+
+
+class CreateAcc(QDialog): 
+        def __init__(self): 
+                super(CreateAcc,self).__init__() #constructor
+                loadUi('createAccount.ui',self) #loads ui file 
+                self.setFixedSize(485,355) #sets size of widget
+                self.password.setEchoMode(QtWidgets.QLineEdit.Password) #covers up password with ***
+                self.passwordConfirm.setEchoMode(QtWidgets.QLineEdit.Password)
+                self.createAccButton.clicked.connect(self.createAccfunction) #connects button createAcc to functon on click
+
+        def createAccfunction(self): 
+                name = self.name.text() #gets the inputs from the fields into the varibales
+                username = self.username.text()
+                password = self.password.text()
+                confirmedPassword = self.passwordConfirm.text()
+                location = self.location.text()
+
+                if len(name) ==0 or len(username)==0 or len(password) == 0 or len(confirmedPassword) ==0: 
+                        #makes sure no compolsory fields are left empty and prints an error if empty
+                        self.error.setText('Please fill in all the compulsory fields.')
+                elif len(password) < 8: #makes sure password is not too short, prints error if short
+                        self.error.setText('Your password is too short, please try again.')
+                        self.password.clear() #clears password and passwordConfirm values
+                        self.passwordConfirm.clear()
+                elif password !=confirmedPassword: #checks that passwords match, if not shows error
+                        self.error.setText('Your passwords do NOT match, please try again.')
+                        self.password.clear()
+                        self.passwordConfirm.clear()
+                else: 
+                        enterUser(name, username, password, location)#calls function to enter values into SQL
+                        login = Login() #defines class login as vairbale logic
+                        widget.addWidget(login) #adds login widget to stack
+                        widget.setCurrentIndex(widget.currentIndex()+1) #incrememnts the stack index by 1
+
+class Login(QDialog): 
+        def __init__(self):    #constructor 
+                super(Login,self).__init__()   
+                loadUi('login.ui',self) #loads ui
+                
+                self.setFixedSize(485, 355)
+                self.setSizeGripEnabled(False)
+               
+                QApplication.processEvents() #process changes
+                self.password.setEchoMode(QtWidgets.QLineEdit.Password) #covers up pass with ***
+                self.createAccountButton.clicked.connect(self.gotoCreate) #links createaccount button to gotocreate
+                self.loginButton.clicked.connect(self.loginfunction)  #links loginbutton to loginfunction
+        
+        def loginfunction(self): 
+                username=self.username.text() #takes values form input fields to variables
+                password=self.password.text()
+                logged = userExists(username, password) #returns boolean form userExists to varibale logged
+                if username == '' or password == '': #if either of the fields are empty then error
+                        self.error.setText('Invalid Credentials. Please try again.')  
+                        self.username.clear()
+                        self.password.clear() #fields are cleared for the user to start again
+                        username=self.username.text()
+                        password=self.password.text()
+                else: 
+                        if logged != True: #if user not logged in because their credetials dont match db then error
+                                self.error.setText('Invalid Credentials. Please try again.')
+
+                        else: 
+                                global user #user set to global 
+                                user = username
+                                loginSuccessful = mainStage() #sets class mainStage to varibale loginSuccessful
+                                widget.addWidget(loginSuccessful) #widget added to stack
+                                widget.setCurrentIndex(widget.currentIndex()+1)    #stack incremented by 1
+
+        def gotoCreate(self): 
+                createacc = CreateAcc() #assigns class createacc to vairbale createacc
+                widget.addWidget(createacc) #widget added6 to stack and index is incremented
+                widget.setCurrentIndex(widget.currentIndex()+1)  
+        
+class mainStage(QMainWindow): 
+        def __init__(self):  #constructor 
+                super(mainStage, self).__init__()
+                loadUi('main stage.ui', self) #loads ui
+                self.layout = QVBoxLayout() #layout defined as vertical
+                
+                self.setFixedSize(1920, 1080)
+                self.user.setText("User:"+user) #shows username top left corner
+                QApplication.processEvents() #saves changes
+                self.statusText.setText('Idle.') #sets status text to idle beneath sprite
+                self.menuTab.hide() 
+                self.notes.hide()
+                self.timer.hide()
+                
+                #hides all of the windows
+                self.chatButton.clicked.connect(self.chatButtonClicked) 
+                self.sendButton.clicked.connect(self.sendButtonClicked)
+                self.micButton.clicked.connect(self.micRequest)
+                self.timerButton.clicked.connect(self.timerClicked)
+                self.notesButton.clicked.connect(self.notesClicked)
+                self.menuButton.clicked.connect(self.menuClicked)
+                self.clearTodo.clicked.connect(self.clearList) 
+                self.addToTodo.clicked.connect(self.addToList)
+                
+                self.stop_listening = False
+                self.backgroundListening = Thread(target = self.backgroundListen) #defines thread for backgorund listen
+                self.backgroundListening.start() #starts the thread
+                
+                #all buttons are connected to their funcitons on click 
+                
+        def closeEvent(self, event):
+                self.stop_background_listen = True  # Signal the thread to stop
+                event.accept()  # Close the application
+
+        def chatButtonClicked(self): 
+                if self.chatFrame.isHidden() == False: #if frame is not hidden it will be hidden 
+                        self.chatFrame.hide()
+                else:
+                        self.chatFrame.show() #if frame is hidden if will be shown 
+
+        def iris_message(self, message):
+            # Use a <div> to try to isolate the border around the text
+                colored_message = (
+                        f'<span style="color:#000000;">{message}</span>'
+                )
+                self.chat.append(colored_message)    
+
+        def you_message(self, message):
+        # Set the font color to black and make it bold
+                colored_message = (
+                        f'<span style="color:#800080;">{message}</span>'
+                )
+                self.chat.append(colored_message)
+                
+        def sendButtonClicked(self):
+                self.chat.setOpenExternalLinks(True)  # This enables opening links in the default browser
+                self.statusText.setText('Searching...') #status text changed to seatching
+                pixmap = QPixmap('searching.png').scaled(190,620)
+                self.label.setPixmap(pixmap)
+                QApplication.processEvents() #pixmap updates to searching and changes are saved
+                message = self.userEntry.text() #holds input from field in varibale message
+
+                if message != '': #if message not empty 
+                        message = (message+'\n') #appended to the chat window
+                        self.you_message('You:')
+                        self.you_message(message)
+                        self.chat.append('\n')
+                        
+                        message = self.userEntry.text() 
+                        self.userEntry.clear() #chat input fields is cleared ready for next request
+                        QApplication.processEvents() #changes saved
+                        snippet = quickSearch(message) #snippet is returned 
+                        reply = GetLinks(message) #reply of links if returned
+                        self.iris_message('Iris:')
+                        if snippet != None: #if snippet isnt None it is appended to chat
+                                self.iris_message(snippet)      
+                        else:     
+                                for i in range(5):
+                                        hyperlink = f'<a href="{reply[i]}" style="color: black; text-decoration: underline;">{reply[i]}</a>'
+                                        self.iris_message(hyperlink) #is snippet is "none" then just reply is appended
+                                        
+                        self.chat.append('\n')               
+                                       
+                        self.statusText.setText('Idle.')
+                        pixmap = QPixmap('idle.png').scaled(190,620)
+                        self.label.setPixmap(pixmap) #status and pixmap are set to idle
+                        QApplication.processEvents() #changes are saved
+        
+        def micRequest(self): 
+                self.statusText.setText('Listening...') #status text is set to listening
+                QApplication.processEvents()
+                time.sleep(1) #allows for processing time
+                QApplication.processEvents()
+                text = listen() #listen is called and returned value stored in varibale text
+                if text != '': #if text isnt empty 
+                        self.statusText.setText('Searching...') #status text is set to listening
+                        QApplication.processEvents()
+                        message = (text) #appended to the chat window
+                        self.you_message('You:')
+                        self.you_message(message)
+                        self.chat.append('\n')
+                        
+                        #message = self.userEntry.text() 
+                        #self.userEntry.clear() #chat input fields is cleared ready for next request
+                        QApplication.processEvents() #changes saved
+                        snippet = quickSearch(message) #snippet is returned 
+                        reply = GetLinks(message) #reply of links if returned
+                        self.iris_message('Iris:')
+                        if snippet != None: #if snippet isnt None it is appended to chat    
+                                self.iris_message(snippet)    
+                        else:     
+                                for i in range(5):
+                                        hyperlink = f'<a href="{reply[i]}" style="color: black; text-decoration: underline;">{reply[i]}</a>'
+                                        self.iris_message(hyperlink) #is snippet is "none" then just reply is appended
+                                        self.chat.append('\n') 
+                        self.chat.append('\n')        
+                self.statusText.setText('Idle.')
+                pixmap = QPixmap('idle.png').scaled(190,620)
+                self.label.setPixmap(pixmap)
+                QApplication.processEvents() #resets the status text to idle and pixmap, saves changes
+
+        def backgroundListen(self): 
+                print('Listening...')
+                while not self.stop_listening: #infinite loop
+                        print('in loop')
+                        time.sleep(0.2) #runs every ~0.2 seconds
+                        wakeWord = str('Iris') #wake word defined
+                        attention = False #attention used to know when word has been heard
+                        while attention != True: #condition controlled 
+                                text = listen() #gets text from voice
+                                if text == wakeWord: #if text is equal to wakeword
+                                        attention = True #loop whill stop
+                                        self.statusText.setText('Listening...') #telling the user the wakeword has been heard
+                                        QApplication.processEvents() #changes saved
+                                        text = listen() #text obtained
+                                        self.you_message('You:')
+                                        self.you_message(text)
+                                        self.chat.append('\n')
+                                        message = text 
+                                        snippet = quickSearch(message) #snippet is returned 
+                                        reply = GetLinks(message) #reply of links if returned
+                                        self.iris_message('Iris:')
+                                        if snippet != None: #if snippet isnt None it is appended to chat  
+                                                self.iris_message(snippet) 
+                                                QApplication.processEvents() #saved changes to gui
+                                        else:     
+                                                for i in range(len(reply)):
+                                                        hyperlink = f'<a href="{reply[i]}" style="color: black; text-decoration: underline;">{reply[i]}</a>'
+                                                        self.iris_message(hyperlink) #is snippet is "none" then just reply is appended
+                                                        QApplication.processEvents() #saved changes to gui
+
+                                        self.chat.append('\n')
+                                        self.statusText.setText('Idle.') 
+                                        pixmap = QPixmap('idle.png').scaled(190,620)
+                                        self.label.setPixmap(pixmap) #pixmap and text below sprite set to idle
+                                        QApplication.processEvents() #saved changes to gui
+                                else: 
+                                        attention = False #loop ran again
+                
+
+        def timerClicked(self):
+                if self.timer.isHidden() == False: #if timer is not hidden it will be hidden 
+                        self.timer.close()
+                else:
+                        self.timer.show() #if timer is hidden it will be shown
+                        self.timerStart.clicked.connect(self.startTime) #links timer start button to start time function on click
+                        self.timerStop.clicked.connect(self.stopTime) #links timer stop button to time stop funciton on click
+        
+        def startTime(self):
+                hours = (self.hours.text()) #takes values from input fields in timer, stores as varibales
+                minutes =(self.minutes.text())
+                seconds = (self.seconds.text())
+                if hours == '': #is any of the values are empty string then they are set to 0
+                        hours = 0
+                else:
+                        hours = int(hours) #set to integet value of what the user input
+                if minutes == '':
+                        minutes = 0
+                else:
+                        minutes = int(minutes)
+                if seconds == '':
+                        seconds = 0
+                else: 
+                        seconds = int(seconds)
+
+                totalSecs = (hours*3600) +(minutes*60)+seconds #total number of seconds is calculated
+                while totalSecs>-1:#condition controlled 
+                        self.timerStop.clicked.connect(self.stopTime) #if stop is clicked connected to stop time func
+                        hour = (totalSecs // 3600) #finds how many hours in total seconds
+                        mins = (totalSecs //60)-(hours*60) #finds how many minutes in total seconds
+                        secs = (totalSecs %60)          
+                        timer = '{:02d}:{:02d}:{:02d}'.format(hour,mins,secs) #writes as string in time format 
+                        self.remainTime.setText("Time Left: "+timer) #sets remaining time label to timer varibale
+                        QApplication.processEvents() #changes are saved
+                        time.sleep(1) #waits 1 second
+                        if totalSecs == 0: #if timer finished
+                                sound_file = 'alarm.mp3' #sound file is set to alarm.mp3
+                                sound = subprocess.call(["afplay", sound_file]) #sound is plaued
+                                self.hours.clear() #all input fields are cleared
+                                self.minutes.clear()
+                                self.seconds.clear()
+                        totalSecs -=1 #with every iteration of while loop total seconds is decreased by 1
+                        
+                else: 
+                        self.remainTime.setText("Timer Done!") #diaplys to the user timer is done
+                
+        def stopTime(self):
+                self.hours.clear() #all input fields are cleared
+                self.minutes.clear()
+                self.seconds.clear()
+                self.remainTime.setText("Timer Stopped.") #user is notified that the timer is done
+
+        def notesClicked(self):
+                if self.notes.isHidden() == False: #if window is not hidden all its inputs are cleared and window is hidden
+                        self.displayNote.clear()
+                        self.notes.close()
+                else:
+                        self.notes.show() #window if shown if ishidden is true 
+                        self.notes.move(300,10) #moves to coordinate
+                        username = user
+                        files = []
+                        path=getUserDirectory(username)  #gets path for specific user using global assinged to local 
+                        items = (os.listdir(path.replace('//', '/'))) #stores list of file names into list items
+                        
+                        self.displayNote.appendPlainText("Available notes:") #prints this into edit window
+                        for i in items: 
+                                item = i.split('.')
+                                files.append(item[0])
+                                self.displayNote.appendPlainText(item[0]) #shows only file name for each file without extension .txt
+                        QApplication.processEvents() #cahnges are saved
+                        self.enterButton.clicked.connect(self.notesEdit) #connects enter button to functoin notes edit on click
+
+        def notesEdit(self):
+                username=user #assings global user to local 
+                found = False 
+                name = self.inputNote.text() #stores value from input field to varibale name 
+                path=getUserDirectory(username) #gets path for the specific user
+                files = []
+                items = (os.listdir(path.replace('/', '/'))) #stores filenames into items array
+                for i in items: 
+                        item = i.split('.')
+                        files.append(item[0]) #appends only file name, no extension to files array
+
+                for i in files: 
+                        if i == name:
+                                found = True #if input is in array then found is true, else its false
+        
+                
+                if found == True: #if found is troue then file name is created by adding extension to name
+                        file = name+'.txt'
+                        directory = (path+"/"+file)
+                        with open(directory, 'r') as f: #direcotry for specific file is opened as varibale f in read mode
+                                data = f.read() #data is read adn file is closed
+                                f.close()
+                                self.displayNote.clear() #input field is cleared
+                                self.displayNote.appendPlainText(data) #data is appended to the display field from .txt
+                else:
+                        self.notice.setText('Note has been created, please start typing.') #note not in list files, so new one made
+                        self.displayNote.clear() #clears input field ready for new input
+                        QApplication.processEvents() #saves changes
+                
+                self.saveButton.clicked.connect(self.updateNote) #on save button click connects to update note func
+
+        def updateNote(self):
+                username = user #sets global to local 
+                newText=self.displayNote.toPlainText() #gets input form displayNote into newText var
+                name = self.inputNote.text() #stores name of note in var name, inputted
+                if name!='': #if name is not empty
+                        path=getUserDirectory(username) #gets path for user
+                        file = name+'.txt' #full file name by adding name and extension together
+                        directory = (path+"//"+file) #directory of the file
+                        f=open(directory, 'w') #directory opened in write 
+                        f.write(newText) #text written
+                        f.close() #file closed
+                        self.notice.setText('Note saved.') #user notified that file has been saved
+                        self.displayNote.clear() #all input fields are cleared
+                        self.inputNote.clear()
+                        items = (os.listdir(path.replace('//', '/'))) 
+                        self.displayNote.appendPlainText("Available notes:") #available notes are printed again
+                        for i in items: 
+                                item = i.split('.')
+                                self.displayNote.appendPlainText(item[0])
+                QApplication.processEvents() #cahnges are saved
+
+        def menuClicked(self):
+                if self.menuTab.isHidden() == False: #if menu tab is not hidden it will be 
+                        self.menuTab.hide()
+                else:   
+                        
+                        self.menuTab.show() #if hidden it will be shown
+                        self.passwordEdit.setEchoMode(QtWidgets.QLineEdit.Password) #both password fields are hidden with ***
+                        self.passCheck.setEchoMode(QtWidgets.QLineEdit.Password)
+                        self.continueButton.clicked.connect(self.security) #continue button will connect to secuirty func
+                        self.en.toggled.connect(self.handle_radio_button)
+                        self.es.toggled.connect(self.handle_radio_button)
+                        self.fr.toggled.connect(self.handle_radio_button)
+                        self.en.setChecked(True)
+                QApplication.processEvents() #changes are processsed
+
+        def handle_radio_button(self):
+                # Determine which radio button is checked
+                selected_button = self.sender()
+                if selected_button.isChecked():
+                        language = selected_button.objectName()
+                        set_language(language)              
+        
+        def security(self):
+                self.completeMessage.clear() #fields are clearedm changes saved
+                QApplication.processEvents()
+                username = self.usernameCheck.text() #input fields stored values into vars username and password
+                password = self.passCheck.text()
+                exist = userExists(username, password) #checks if user exists using SQL, boolean returned
+                if exist == True:  #if in db
+                        self.usernameCheck.clear() #all fields are cleared, security check layer closed
+                        self.passCheck.clear()
+                        self.securityCheck.close()
+                        name = retrieveInfo(username, password) #name and location retrieved using SQL
+                        self.nickname.setText(name) #labels are set to correponding values
+                        self.usernameEdit.setText(username)
+                        self.passwordEdit.setEchoMode(QtWidgets.QLineEdit.Password) #password hidden using ***
+                        self.passwordEdit.setText(password)
+                        QApplication.processEvents() #changes saved
+                        self.saveChanges.clicked.connect(self.modifyUserInfo) #clicking save changes will connect to func modify user inf
+                        
+                else: 
+                        self.errorMessage.setText('The data you have entered is incorrect. Try again') #SQL check returned false
+                        self.usernameCheck.clear() #fields are cleared 
+                        self.passCheck.clear()
+                        username = self.usernameCheck.text() #values are taken in again, another attempt
+                        password = self.passCheck.text()
+        
+        def modifyUserInfo(self):
+                self.passwordEdit.setEchoMode(QtWidgets.QLineEdit.Password) #hides password field using ***
+                username = self.usernameEdit.text() #assings input values to variables username, name, password and location
+                password = self.passwordEdit.text()
+                name = self.nickname.text()
+                changeUserInfo(name, username, password) #change user info is rran, update sql tbl
+                self.completeMessage.setText('Changes succesfully saved.') #user is told changes were successful
+                self.usernameEdit.clear() #all fields are cleared and secuirty check layer is shown again
+                self.passwordEdit.clear()
+                self.nickname.clear()
+                self.securityCheck.show()
+        
+        def clearList(self):
+                self.todoEdit.clear() #list is cleared
+                while self.todoLayout.count() > 0:
+                        item = self.todoLayout.takeAt(0)  # Take the first item
+                        if item.widget() is not None:
+                                item.widget().deleteLater()  # Delete the widget
+                QApplication.processEvents() #changes saved
+
+        def addToList(self):
+                text = self.lineEdit.text() #text from input field is stored in var text
+                self.todoLayout.setContentsMargins(10, 10, 10, 10)  
+                self.todoLayout.setSpacing(10)  # Add 5px spacing between the widgets
+                if text:
+                        radio_button = QRadioButton(text)  # Create a radio button with the text
+                        radio_button.setStyleSheet("border: none; font-size: 16px; margin-left:5px;")  # Set the stylesheet
+                        radio_button.clicked.connect(lambda: self.onTaskClicked(radio_button))
+
+                        if self.todoLayout.itemAt(self.todoLayout.count() - 1) is not None and isinstance(self.todoLayout.itemAt(self.todoLayout.count() - 1).spacerItem(), QSpacerItem):
+                                self.todoLayout.takeAt(self.todoLayout.count() - 1)
+
+                        self.todoLayout.addWidget(radio_button, alignment=Qt.AlignTop)
+                        self.todoLayout.addStretch()
+                        self.lineEdit.clear() #input field is cleared
+                QApplication.processEvents() #changes saved
+        
+        def onTaskClicked(self, radio_button):
+        # Change text color to grey and disable the button
+                radio_button.setStyleSheet("color: grey; border: none; font-size: 16px; margin-left: 10px;")  # Change text color
+                radio_button.setEnabled(False)  # Disable the radio button
+
+app = QApplication(sys.argv) #app is defined as QAplication class and inherits its methods
+#window = CreateAcc()
+window = Login() #calss login set to varibale window
+widget = QtWidgets.QStackedWidget() #window added to widget stack
+widget.addWidget(window) 
+widget.show() #widget is shown
+sys.exit(app.exec_())
+#app.exec_() #will terminate the execution of code when window closed

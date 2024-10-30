@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(191, 210, 222)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>130</y>
+      <width>201</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>idle.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="statusText">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>790</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 28pt &quot;Rockwell&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="micButton">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>860</y>
+      <width>101</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: rgb(191, 210, 222);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>microphone.png</normaloff>microphone.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>64</width>
+      <height>64</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="chatButton">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>860</y>
+      <width>101</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: rgb(191, 210, 222);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>chat.png</normaloff>chat.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>64</width>
+      <height>64</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="menuButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>100</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: rgb(191, 210, 222);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>menu.png</normaloff>menu.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>64</width>
+      <height>64</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="timerButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>100</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: rgb(191, 210, 222);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>timer.png</normaloff>timer.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>64</width>
+      <height>64</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="notesButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>310</y>
+      <width>100</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: rgb(191, 210, 222);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>quick notes.png</normaloff>quick notes.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>128</width>
+      <height>128</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="menuLabel">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>100</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 bold 20pt &quot;Rockwell&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Menu</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>220</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 bold 20pt &quot;Rockwell&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Timer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>340</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 bold 20pt &quot;Rockwell&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Quick Notes</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>10</y>
+      <width>451</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(191, 210, 222);
+border-style: outset;
+border-width: 2px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 26pt &quot;Rockwell&quot;;
+text-decoration: underline;
+border: none</string>
+     </property>
+     <property name="text">
+      <string>TO-DO LIST: </string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="todoEdit">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>80</y>
+       <width>421</width>
+       <height>371</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+color: black
+</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="plainText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clearTodo">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>480</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}</string>
+     </property>
+     <property name="text">
+      <string>Clear List</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addToTodo">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>450</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}</string>
+     </property>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>431</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="todoLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>1</number>
+      </property>
+      <property name="topMargin">
+       <number>1</number>
+      </property>
+      <property name="rightMargin">
+       <number>1</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
+     </layout>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>460</y>
+       <width>331</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white;  /* White background */
+border: 2px solid;        /* Border with default color */
+border-radius: 10px;      /* Rounded edges */
+border-color: rgb(128, 0, 128);
+padding: 5px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="chatFrame">
+    <property name="geometry">
+     <rect>
+      <x>1300</x>
+      <y>80</y>
+      <width>521</width>
+      <height>871</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(140, 0, 140);
+border-style: outset;
+border-width: 10px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="innerFrame">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>461</width>
+       <height>751</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white;
+border-style: solid;
+border-width: 10px;
+border-radius: 40px;
+border-color: none</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTextBrowser" name="chat">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>421</width>
+        <height>711</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+font-size: 16px;
+color: black;
+background-color: white;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLineEdit" name="userEntry">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>795</y>
+       <width>381</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border-style: outset;
+border-width: 2px;
+border-radius: 20px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);
+font-size: 14px</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sendButton">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>790</y>
+       <width>53</width>
+       <height>48</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color: rgb(255, 255, 255);
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 20px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>sendChat.png</normaloff>sendChat.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="user">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>211</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 13px;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="notes">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>920</y>
+      <width>551</width>
+      <height>681</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(140, 0, 140);
+border-style: outset;
+border-width: 10px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLineEdit" name="inputNote">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>391</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size:14px;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="enterButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>100</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Enter</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="displayNote">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>170</y>
+       <width>491</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size:14px;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>311</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string>Enter name of note you want to find or create:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveButton">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>630</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+}
+
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="notice">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>311</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color: rgb(140, 0, 140);
+font-size: 14px;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="timer" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>410</y>
+      <width>291</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(140, 0, 140);
+border-style: outset;
+border-width: 10px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+    </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>22</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string>In boxes provided enter timer duration:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="hours">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="minutes">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>70</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+border-color: rgb(128, 0, 128);
+background-color: rgb(140, 0, 140);
+font-size: 14px;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Hours :</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>90</y>
+       <width>41</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+border-color: rgb(128, 0, 128);
+background-color: rgb(140, 0, 140);
+font-size: 14px;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Mins :</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="timerStart">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>120</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;
+}
+
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(94, 103, 109);
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="timerStop">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>120</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;
+}
+
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(94, 103, 109);
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Stop</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>90</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+border-color: rgb(128, 0, 128);
+background-color: rgb(140, 0, 140);
+font-size: 14px;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Secs:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="seconds">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>70</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="remainTime">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;</string>
+     </property>
+     <property name="text">
+      <string>Time Left:</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="menuTab">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>551</width>
+      <height>881</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(140, 0, 140);
+border-style: outset;
+border-width: 10px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>281</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: solid; 
+border-width: 2px;
+border-color: white;
+color: white;
+font-size: 16px;
+</string>
+     </property>
+     <property name="text">
+      <string>User Information and Customization:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>460</y>
+       <width>91</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: solid; 
+border-width: 2px;
+border-color: white;
+color: white;
+font-size: 16px;
+</string>
+     </property>
+     <property name="text">
+      <string>About Iris:</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>130</y>
+       <width>491</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="yourUsername">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+font-size: 16px</string>
+      </property>
+      <property name="text">
+       <string>Your username</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="yourUsername_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+font-size: 16px</string>
+      </property>
+      <property name="text">
+       <string>Your password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="yourUsername_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+font-size: 16px</string>
+      </property>
+      <property name="text">
+       <string>Your nickname</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="saveChanges">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>240</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: white;
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>Save Changes</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nickname">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: solid;
+border-radius: 10px;
+border-width: 2px;
+font-size: 14px;
+color: black</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="usernameEdit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>100</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: solid;
+border-radius: 10px;
+border-width: 2px;
+font-size: 14px;
+color: grey</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="passwordEdit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>150</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: solid;
+border-radius: 10px;
+border-width: 2px;
+font-size: 14px;
+color: grey</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>232</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: red;
+font-size: 14px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="completeMessage">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>250</y>
+        <width>231</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+font-size: 16px;
+color: red</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="lanPanel" native="true">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>190</y>
+        <width>331</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255);
+border-style: outset;
+border-width: 2px;
+border-radius: 40px;
+border-color: rgb(128, 0, 128);
+color: rgb(128, 0, 128);</string>
+      </property>
+      <widget class="QLabel" name="lang_label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 12px;</string>
+       </property>
+       <property name="text">
+        <string>Select a language:</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="en">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
+       </property>
+       <property name="text">
+        <string>English (default)</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="es">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>50</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
+       </property>
+       <property name="text">
+        <string>Spanish</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="fr">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>50</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
+       </property>
+       <property name="text">
+        <string>French</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="securityCheck">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>491</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: white</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="Passwordlabel">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>140</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+font-size: 16px</string>
+       </property>
+       <property name="text">
+        <string>Password:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="continueButton">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>250</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color: white;
+	border-style: outset;
+	border-width: 2px;
+	border-radius: 40px;
+	border-color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+
+
+</string>
+       </property>
+       <property name="text">
+        <string>Continue</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="passCheck">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>150</y>
+         <width>281</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: solid;
+border-radius: 10px;
+border-width: 2px;
+font-size: 14px;
+color: black</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="errorMessage">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>190</y>
+         <width>391</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+font-size: 14px;
+color: red;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Passwordlabel_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>90</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+font-size: 16px</string>
+       </property>
+       <property name="text">
+        <string>Username: </string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="usernameCheck">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>100</y>
+         <width>281</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: solid;
+border-radius: 10px;
+border-width: 2px;
+font-size: 14px;
+color: black</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Passwordlabel_3">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>40</y>
+         <width>271</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+font-size: 16px</string>
+       </property>
+       <property name="text">
+        <string>Enter your details to access data:</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>540</y>
+       <width>491</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>441</width>
+        <height>271</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none; 
+font-size: 14px;
+color: black</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What is Iris?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Iris is Your virtual assistant, capable of performing a variety of tasks to make your experience at work, or at home, more efficient.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Who is Iris for?&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;Iris is suitable for a vide range on demographics inlcuding students, giving them a place to keep organised and providing any information they need to find on the internet right at their fingertips - all in one app. Iris can also be used by adults for similar tasks, the simplistic design and this instruction manual is enough to get anyone with any experience working with this virutal assistant.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;What can Iris do?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;At the moment Iris is able to perform the following tasks: find quick answers and links for you, open any link you provide. Displaying your todo-list. Storing your notes. Setting a timer and providing a handy calendar. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;In addition, you are also able to change your Nickname and Location. (your location is only used to provide weather forecasts, you dont have to provide it to us, you are able to put &amp;quot;weather in ...&amp;quot; with the city name into chat and receive the weather anyway.&lt;br /&gt;To use the google search: type yout message into the chat window and sent it, if quick information is available then Iris will display it, if not, she will display links which youre able to copy and paste into the chat and the link will open. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;In addition, youre able to use the wakeword 'Iris' and speak your command to the assistant. If this is successful it will appear in chat and you will get a reply. In addition you can press the microphone button and ask your question. (list of commands is available at the bottom of this document)&lt;br /&gt;Finally the chat window is collapsable, meaning if you click the chat button the window will dissapear, if you click it again it will appear again.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Thank you for using the software.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Using the Microphone: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Iris is able to recognise a wake word 'Iris'. When the wake word is recognised you may speak the request which will apear in the chat window. All you have to do is send it and Iris will do the rest!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-style:italic; color:#800080;&quot;&gt;Languages:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;Using the menu tab, in User Information and Customization you are able to select the language to use Iris with. This will change the chat window as well as allow You to speak to Iris in that language too!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="micMuteButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1020</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border:solid;
+border-width:2px;
+border-radius: 10px;
+border-color: rgb(128, 0, 128);
+background-color: white;
+font-size: 14px;
+color: rgb(128, 0, 128);
+}
+
+QPushButton:hover {
+	background-color: rgb(160, 175, 185);
+}
+
+QPushButton:pressed {
+	background-color: rgb(160rgb(94, 103, 109), 175, 185);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Microphone ON</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
