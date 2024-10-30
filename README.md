@@ -34,7 +34,7 @@ To use this project, follow these steps:
    - After ensuring the dependencies are installed, you can start the project by running the main Python file.
    - For example, in a terminal, run:
      ```bash
-     python main.py
+     python IRIS
      ```
 
 ## Libraries Used and Installation
@@ -53,20 +53,6 @@ This project relies on several libraries for its functionality. Ensure you have 
   - `speech_recognition` (for voice input)
   - `requests` (for making HTTP requests)
   - `beautifulsoup4` (for web scraping)
-
-### Installation Instructions
-
-To install the necessary libraries, open a terminal or command prompt and run the following commands:
-
-## macOS and Windows:
-### Install all libraries at once
-pip install PyQt5 googlesearch-python speechrecognition requests beautifulsoup4
-
-### Run the file
-Run the file from your terminal but going into the folder and typing "python IRIS".
-Alternatively, run the file from an IDE environemnt by opening the folder, don't forget to install libraries.
-
-This will install all required libraries for the project.
 
 ## Using the Microphone
 Iris can recognize the wake word "Iris." When you say the wake word, Iris listens for your command, displays it in the chat window, and responds accordingly. You can also click the microphone button to ask your questions.
